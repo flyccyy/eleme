@@ -73,7 +73,12 @@
 </template>
 
 <script>
+// import '@/common/less/mixin.less';
+import star from '@/components/star'
 export default {
+  components:{
+    star
+  },
   data() {
     return {
       active: 2,
@@ -86,11 +91,23 @@ export default {
     this.$axios.get('/api/seller').then(res=>{
       console.log(res)
     })
+  },
+  methods:{
+       showDetail(){
+      this.detailShow = true;
+    }
   }
+
 };
 </script>
 
 <style lang="less" scoped>
+.bg-image(@url) {
+  background-image: ~"url(@{url}@2x.png)";
+  @media(-webkit-min-device-pixel-ratio:3),(min-device-pixel-ratio:3){
+    background-image:~"url(@{url}@3x.png)";
+  }
+}
   .header {
     color:#fff;
     background:rgba(7,17,27,0.5) ;
@@ -117,7 +134,7 @@ export default {
             width:30px;
             height:18px;
             vertical-align: top;
-            .bg-image('brand');
+            .bg-image('../../assets/img/brand');
             background-size: 30px 18px;
             background-repeat: no-repeat;
           }
@@ -138,19 +155,19 @@ export default {
             background-repeat: no-repeat;
             vertical-align: top;
             &.decrease {
-              .bg-image('decrease_1');
+              .bg-image('../../assets/img/decrease_1');
             }
             &.discount {
-              .bg-image('discount_1');
+              .bg-image('../../assets/img/discount_1');
             }
             &.guarantee {
-              .bg-image('guarantee_1');
+              .bg-image('../../assets/img/guarantee_1');
             }
             &.invoice {
-              .bg-image('invoice_1');
+              .bg-image('../../assets/img/invoice_1');
             }
             &.special {
-              .bg-image('special_1');
+              .bg-image('../../assets/img/special_1');
             }
           }
           .text {
@@ -196,7 +213,7 @@ export default {
         width:22px;
         height:12px;
         margin-top: 8px;
-        .bg-image('bulletin');
+        .bg-image('../../assets/img/bulletin');
         background-size: 22px 12px;
         background-repeat: no-repeat;
       }
@@ -295,19 +312,19 @@ export default {
                 background-repeat: no-repeat;
                 vertical-align: top;
                 &.decrease {
-                  .bg-image('decrease_2')
+                  .bg-image('../../assets/img/decrease_2')
                 }
                 &.discount {
-                  .bg-image('discount_2')
+                  .bg-image('../../assets/img/discount_2')
                 }
                 &.guarantee {
-                  .bg-image('guarantee_2')
+                  .bg-image('../../assets/img/guarantee_2')
                 }
                 &.invoice {
-                  .bg-image('invoice_2')
+                  .bg-image('../../assets/img/invoice_2')
                 }
                 &.special {
-                  .bg-image('special_2')
+                  .bg-image('../../assets/img/special_2')
                 }
               }
               .text {
